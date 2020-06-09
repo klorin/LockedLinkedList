@@ -93,7 +93,12 @@ public:
             count--;
             lock.unlock();
         }
-        unsigned int getCounter() const {return count;}
+        unsigned int getCounter() {
+			lock.lock();
+			unsigned int result = count;
+			lock.unlock();
+			return result;
+		}
     };
 
 
@@ -198,9 +203,15 @@ public:
      */
     bool remove(const T &value) {
         //init + sanitize inputs
-        Node *current = head;
-        Node *prev = nullptr;
         if (getSize() == 0) return false;
+        
+        head->lockNode();
+        if (head->next) head->next->lockNode();
+        Node *current = head;
+        head->unlockNode();
+        if (head->next) head->next->unlockNode();
+        
+        Node *prev = nullptr;
 
         // head removal
         if (head && head->data == value){
