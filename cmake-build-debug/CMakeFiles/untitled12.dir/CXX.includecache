@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/User/CLionProjects/LockedLinkedList/Mutex.h
+D:/Users/Roy/Desktop/git/LockedLinkedList3/Mutex.h
 pthread.h
 -
 
-C:/Users/User/CLionProjects/LockedLinkedList/ThreadSafeList.cpp
+D:/Users/Roy/Desktop/git/LockedLinkedList3/ThreadSafeList.cpp
 iostream
 -
 ThreadSafeList.h
-C:/Users/User/CLionProjects/LockedLinkedList/ThreadSafeList.h
+D:/Users/Roy/Desktop/git/LockedLinkedList3/ThreadSafeList.h
 
-C:/Users/User/CLionProjects/LockedLinkedList/ThreadSafeList.h
+D:/Users/Roy/Desktop/git/LockedLinkedList3/ThreadSafeList.h
 pthread.h
 -
 iostream
@@ -24,17 +24,11 @@ iostream
 iomanip
 -
 Mutex.h
-C:/Users/User/CLionProjects/LockedLinkedList/Mutex.h
+D:/Users/Roy/Desktop/git/LockedLinkedList3/Mutex.h
 
-C:/Users/User/CLionProjects/LockedLinkedList/listTest.cpp
+D:/Users/Roy/Desktop/git/LockedLinkedList3/main.cpp
+iostream
+-
 ThreadSafeList.h
-C:/Users/User/CLionProjects/LockedLinkedList/ThreadSafeList.h
-vector
--
-algorithm
--
-cassert
--
-fstream
--
+D:/Users/Roy/Desktop/git/LockedLinkedList3/ThreadSafeList.h
 

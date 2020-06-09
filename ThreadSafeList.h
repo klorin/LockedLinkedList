@@ -103,26 +103,7 @@ public:
      * @param data the new data to be added to the list
      * @return true if a new node was added and false otherwise
      */
-    bool insert(const T &data) {
-        // in case list is empty
-        if (!head) {
-            Node *newNode = new Node(data);
-            newNode->lockNode();
-            try {
-                head = newNode;
-                size.incrementCounter();
-            }
-            catch (std::exception &e){
-                std::cerr << "bool insert(const T& data) failed";
-                exit(-1);
-            }
-            __insert_test_hook();
-            newNode->unlockNode();
-            return true;
-        }
-
-        Node *temp = head;
-        Node *prev = nullptr;
+    bool insertFindTarget(Node *&temp, Node *&prev, const T &data) {
         bool flag = true;
         if (head->data > data) head->lockNode();
         while (temp && temp->data <= data) {
@@ -139,26 +120,11 @@ public:
             temp = temp->next;
             flag = false;
         }
+        return true;
+    }
 
-        Node *newNode = new Node(data);
-        newNode->lockNode();
-        //beginning insert
-        if (temp == head){
-            try {
-                head = newNode;
-                newNode->next = temp;
-                size.incrementCounter();
-            }
-            catch (std::exception &e){
-                std::cerr << "bool insert(const T& data) failed";
-                exit(-1);
-            }
-            __insert_test_hook();
-            head->unlockNode();
-            head->next->unlockNode();
-        }
-        //middle & end insert
-        else{
+    void regularInsert(Node *&prev, Node *&temp, Node *newNode){
+        {
             try {
                 prev->next = newNode;
                 newNode->next = temp;
@@ -173,6 +139,55 @@ public:
             prev->unlockNode();
             if (temp) temp->unlockNode();
         }
+    }
+
+    void beginningInsert(Node *&temp, Node *&newNode){
+        try {
+            head = newNode;
+            newNode->next = temp;
+            size.incrementCounter();
+        }
+        catch (std::exception &e){
+            std::cerr << "bool insert(const T& data) failed";
+            exit(-1);
+        }
+        __insert_test_hook();
+        head->unlockNode();
+        head->next->unlockNode();
+    }
+
+
+    void headInsert(const T &data){
+        Node *newNode = new Node(data);
+        newNode->lockNode();
+        try {
+            head = newNode;
+            size.incrementCounter();
+        }
+        catch (std::exception &e){
+            std::cerr << "bool insert(const T& data) failed";
+            exit(-1);
+        }
+        __insert_test_hook();
+        newNode->unlockNode();
+    }
+
+    bool insert(const T &data) {
+        // in case list is empty
+        if (!head) {
+            headInsert(data);
+            return true;
+        }
+
+        Node *temp = head;
+        Node *prev = nullptr;
+        if (!insertFindTarget(temp, prev, data)) return  false;
+        Node *newNode = new Node(data);
+        newNode->lockNode();
+        //beginning insert
+        if (temp == head) beginningInsert(temp, newNode);
+        //middle & end insert
+        else regularInsert(prev, temp, newNode);
         return true;
     }
 

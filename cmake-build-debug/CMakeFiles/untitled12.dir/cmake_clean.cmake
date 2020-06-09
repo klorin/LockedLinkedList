@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/untitled12.dir/listTest.cpp.obj"
+  "CMakeFiles/untitled12.dir/main.cpp.obj"
   "CMakeFiles/untitled12.dir/ThreadSafeList.cpp.obj"
   "CMakeFiles/untitled12.dir/Mutex.cpp.obj"
   "untitled12.pdb"
