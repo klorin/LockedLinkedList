@@ -195,7 +195,7 @@ public:
             return true;
         }
 
-        findTarget();
+        findTarget(current, prev, value);
 
         if (current->data == value) { //target found
             removeTarget(current, prev);
@@ -204,7 +204,7 @@ public:
             prev->unlockNode();
             return true;
         } else { //target unfound
-            remove_releaseLocks();
+            remove_releaseLocks(current, prev);
             __remove_test_hook();
 
             return false;

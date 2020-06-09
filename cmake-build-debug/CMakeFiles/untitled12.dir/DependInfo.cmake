@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/Users/Roy/Desktop/test/untitled12/Mutex.cpp" "D:/Users/Roy/Desktop/test/untitled12/cmake-build-debug/CMakeFiles/untitled12.dir/Mutex.cpp.obj"
-  "D:/Users/Roy/Desktop/test/untitled12/ThreadSafeList.cpp" "D:/Users/Roy/Desktop/test/untitled12/cmake-build-debug/CMakeFiles/untitled12.dir/ThreadSafeList.cpp.obj"
-  "D:/Users/Roy/Desktop/test/untitled12/listTest.cpp" "D:/Users/Roy/Desktop/test/untitled12/cmake-build-debug/CMakeFiles/untitled12.dir/listTest.cpp.obj"
+  "C:/Users/User/CLionProjects/LockedLinkedList/Mutex.cpp" "C:/Users/User/CLionProjects/LockedLinkedList/cmake-build-debug/CMakeFiles/untitled12.dir/Mutex.cpp.obj"
+  "C:/Users/User/CLionProjects/LockedLinkedList/ThreadSafeList.cpp" "C:/Users/User/CLionProjects/LockedLinkedList/cmake-build-debug/CMakeFiles/untitled12.dir/ThreadSafeList.cpp.obj"
+  "C:/Users/User/CLionProjects/LockedLinkedList/listTest.cpp" "C:/Users/User/CLionProjects/LockedLinkedList/cmake-build-debug/CMakeFiles/untitled12.dir/listTest.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

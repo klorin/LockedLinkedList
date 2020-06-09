@@ -6,13 +6,35 @@
 
 #IncludeRegexTransform: 
 
-D:/Users/Roy/Desktop/test/untitled12/Mutex.cpp
-Mutex.h
-D:/Users/Roy/Desktop/test/untitled12/Mutex.h
-stdio.h
+C:/Users/User/CLionProjects/LockedLinkedList/Mutex.h
+pthread.h
 -
 
-D:/Users/Roy/Desktop/test/untitled12/Mutex.h
+C:/Users/User/CLionProjects/LockedLinkedList/ThreadSafeList.cpp
+iostream
+-
+ThreadSafeList.h
+C:/Users/User/CLionProjects/LockedLinkedList/ThreadSafeList.h
+
+C:/Users/User/CLionProjects/LockedLinkedList/ThreadSafeList.h
 pthread.h
+-
+iostream
+-
+iomanip
+-
+Mutex.h
+C:/Users/User/CLionProjects/LockedLinkedList/Mutex.h
+
+C:/Users/User/CLionProjects/LockedLinkedList/listTest.cpp
+ThreadSafeList.h
+C:/Users/User/CLionProjects/LockedLinkedList/ThreadSafeList.h
+vector
+-
+algorithm
+-
+cassert
+-
+fstream
 -
 
