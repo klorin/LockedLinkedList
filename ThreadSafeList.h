@@ -182,57 +182,77 @@ public:
      * @return true if a matched node was found and removed and false otherwise
      */
     bool remove(const T &value) {
-        Node *temp = head;
+        //init + sanitize inputs
+        Node *current = head;
         Node *prev = nullptr;
         if (getSize() == 0) return false;
 
         // head removal
         if (head && head->data == value){
-            try {
-                temp->lockNode();
-                head = head->next;
-                temp->unlockNode();
-                delete temp;
-                size.decrementCounter();
-            }
-            catch (std::exception &e){
-                std::cerr << "bool remove(const T &value) failed";
-                exit(-1);
-            }
+            removeHead(current);
+
             __remove_test_hook();
             return true;
         }
 
-        while (temp->next != nullptr && temp->data != value) {
-            if (!prev) temp->lockNode();
-            if (prev) prev->unlockNode();
-            prev = temp;
-            temp = temp->next;
-            temp->lockNode();
-        }
+        findTarget();
 
-        if (temp->data == value) {
-            try{
-            prev->next = temp->next;
-            temp->unlockNode();
-            delete temp;
-            size.decrementCounter();
-            }
-            catch (std::exception &e){
-                std::cerr << "bool remove(const T &value) failed";
-                exit(-1);
-            }
+        if (current->data == value) { //target found
+            removeTarget(current, prev);
+
             __remove_test_hook();
             prev->unlockNode();
             return true;
-        } else if (temp->next == nullptr) {
-            if (prev) {
-                prev->unlockNode();
-                temp->unlockNode();
-            }
+        } else { //target unfound
+            remove_releaseLocks();
+            __remove_test_hook();
+
             return false;
         }
-        return true;
+    }
+
+    void removeHead(Node *current) {
+        try {
+            current->lockNode();
+            head = head->next;
+            current->unlockNode();
+            delete current;
+            size.decrementCounter();
+        }
+        catch (std::exception &e) {
+            std::cerr << "bool remove(const T &value) failed";
+            exit(-1);
+        }
+    }
+
+    void findTarget(Node *&current, Node *&prev, const T &value) {
+        while (current->next != nullptr && current->data != value) {
+            if (!prev) current->lockNode();
+            if (prev) prev->unlockNode();
+            prev = current;
+            current = current->next;
+            current->lockNode();
+        }
+    }
+
+    void removeTarget(Node *&current, Node *&prev) {
+        try {
+            prev->next = current->next;
+            current->unlockNode();
+            delete current;
+            size.decrementCounter();
+        }
+        catch (std::exception &e) {
+            std::cerr << "bool remove(const T &value) failed";
+            exit(-1);
+        }
+    }
+
+    void remove_releaseLocks(Node *&current, Node *&prev) {
+        if (prev) {
+            prev->unlockNode();
+            current->unlockNode();
+        }
     }
 
     /**
