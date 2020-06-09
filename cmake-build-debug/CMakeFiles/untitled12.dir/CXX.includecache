@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Users/Roy/Desktop/test/untitled12/Mutex.cpp
+Mutex.h
+D:/Users/Roy/Desktop/test/untitled12/Mutex.h
+stdio.h
+-
+
+D:/Users/Roy/Desktop/test/untitled12/Mutex.h
+pthread.h
+-
+
